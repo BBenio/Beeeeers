@@ -1,6 +1,7 @@
 import {Model, model, Schema} from "mongoose";
+import {TodoModelInterface} from "./todo_interface";
 
-const todoshema = new Schema({
+const todo_schema = new Schema({
   name: {
     type: String,
   },
@@ -9,4 +10,4 @@ const todoshema = new Schema({
   }
 });
 
-export const Todo: Model<any> = model("Todo", todoshema);
+export const Todo: Model<TodoModelInterface> = model("Todo", todo_schema);
