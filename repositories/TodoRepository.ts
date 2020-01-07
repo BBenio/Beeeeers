@@ -1,10 +1,11 @@
 import {Todo} from "../models/Todo";
 import {Model} from "mongoose";
+import {TodoInterface, TodoModelInterface} from "../models/todo_interface";
 
 class TodoRepository {
-    private readonly model: Model<any>;
+    private readonly model: Model<TodoModelInterface>;
 
-    constructor(model: Model<any>) {
+    constructor(model: Model<TodoModelInterface>) {
         this.model = model;
     }
 
@@ -23,14 +24,14 @@ class TodoRepository {
         return this.model.findById(id);
     }
 
-    deleteById(id: number) {
+    deleteById(id: any) {
         return this.model.findByIdAndDelete(id);
     }
 
-    updateById(id: number, object: any) {
+    updateById(id: any, object: TodoInterface) {
         const query = {_id: id};
         return this.model.findOneAndUpdate(query, {$set: {name: object.name, done: object.done}});
     }
 }
 
-module.exports = new TodoRepository(Todo);
+export = new TodoRepository(Todo);
