@@ -1,6 +1,6 @@
 package-lock.json
 ./build/*
-build/*
+backend/build/*
 
 # Created by https://www.gitignore.io/api/node,vuejs,webstorm
 # Edit at https://www.gitignore.io/?templates=node,vuejs,webstorm

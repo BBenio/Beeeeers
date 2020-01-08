@@ -1,6 +1,6 @@
 import {resolve} from "path";
 
-require('dotenv').config({ path: resolve(__dirname, '../.env') });
+require('dotenv').config({ path: resolve(__dirname, '../../.env') });
 
 console.log(process.env.MONGO_URL_TODO);
 export const config_todos = {
