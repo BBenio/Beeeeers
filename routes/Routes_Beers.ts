@@ -1,13 +1,13 @@
 import express from "express";
-import {TodoInterface} from "../models/todo_interface";
+import {BeerInterface} from "../models/beer_interface";
 
-const repository = require("../repositories/TodoRepository");
+const repository = require("../repositories/Beer_Repository");
 const app = express.Router();
 
 app.get("/", (req, res) => {
     repository.findAll()
-        .then((todos: TodoInterface[]) => {
-            res.json(todos)
+        .then((beers: BeerInterface[]) => {
+            res.json(beers)
         })
         .catch((error: Error) => console.log(error));
 });
@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     const {name} = req.body;
     repository.create(name)
-        .then((todo: TodoInterface) => {
-            res.json(todo);
+        .then((beer: BeerInterface) => {
+            res.json(beer);
         }).catch((error: Error) => console.log(error));
 });
 
@@ -31,8 +31,8 @@ app.delete("/:id", (req, res) => {
 
 app.put("/:id", (req, res) => {
     const id = req.params;
-    const todo: TodoInterface = {name: req.body.name, done: req.body.done};
-    repository.updateById(id, todo)
+    const beer: BeerInterface = {id_beer: id, name: req.body.name, brand: req.body.brand};
+    repository.updateById(id, beer)
         .then(res.status(200).json([]))
         .catch((error: any) => console.log(error))
 });

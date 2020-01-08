@@ -2,7 +2,7 @@ import {Todo} from "../models/Todo";
 import {Model} from "mongoose";
 import {TodoInterface, TodoModelInterface} from "../models/todo_interface";
 
-class TodoRepository {
+class Todo_Repository {
     private readonly model: Model<TodoModelInterface>;
 
     constructor(model: Model<TodoModelInterface>) {
@@ -30,8 +30,8 @@ class TodoRepository {
 
     updateById(id: any, object: TodoInterface) {
         const query = {_id: id};
-        return this.model.findOneAndUpdate(query, {$set: {name: object.name, done: object.done}});
+        return this.model.findOneAndUpdate(query, {$set: {name: object.name, done: object.done} as TodoInterface});
     }
 }
 
-export = new TodoRepository(Todo);
+export = new Todo_Repository(Todo);
