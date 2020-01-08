@@ -23,7 +23,6 @@ mongoose.connect(config_beers.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("Beers connects")).catch((err: any) => console.log(err));
-console.log("End connects");
 
 app.use(cors());
 
