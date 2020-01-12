@@ -1,6 +1,7 @@
-import {Model} from "mongoose";
-import {BeerInterface, BeerModelInterface} from "../models/beer_interface";
+import {Model, Types} from "mongoose";
+import {BeerInterface, BeerModelInterface, BeerPriceModelInterface} from "../models/beer_interface";
 import {Beer} from "../models/Beer";
+import BeerPrice_Repository from './BeerPrice_Repository';
 
 class Beer_Repository {
     private readonly model: Model<BeerModelInterface>;
@@ -9,14 +10,14 @@ class Beer_Repository {
         this.model = model;
     }
 
-    create(name: string) {
-        const new_beer = {name, done: false};
+    create(name: string, brand: string, description: string, price: number) {
+        const id_beer = name+brand;
+        const new_beer: BeerInterface = {id_beer, name, brand, description};
         const beer = new this.model(new_beer);
-
-        return beer.save();
+        return Promise.all([beer.save(), BeerPrice_Repository.create(beer.id_beer, price)]);
     }
 
-    findAll() {
+    async findAll() {
         return this.model.find();
     }
 
@@ -24,13 +25,21 @@ class Beer_Repository {
         return this.model.findById(id);
     }
 
-    deleteById(id: any) {
+    async deleteById(id: any) {
+        this.findById(id).then(async (beer: BeerInterface | null) => {
+            if (beer) {
+                await BeerPrice_Repository.deleteByIdBeer(beer.id_beer);
+            }
+        });
+
         return this.model.findByIdAndDelete(id);
     }
 
-    updateById(id: any, object: BeerInterface) {
+    async updateById(id: any, beer: BeerInterface, new_price: number) {
         const query = {_id: id};
-        return this.model.findOneAndUpdate(query, {$set: {id_beer: id, name: object.name, brand: object.brand} as BeerInterface});
+
+        await this.model.findOneAndUpdate(query, {$set: {name: beer.name, brand: beer.brand, description: beer.description}});
+        return BeerPrice_Repository.create(beer.id_beer, new_price);
     }
 }
 

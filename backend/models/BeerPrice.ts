@@ -2,7 +2,7 @@ import {Model, model, Schema} from "mongoose";
 
 const beer_price_schema = new Schema({
     id_beer: {
-        type: Number,
+        type: String,
     },
     price: {
         type: Number,

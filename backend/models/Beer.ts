@@ -2,13 +2,16 @@ import {Model, model, Schema} from "mongoose";
 
 const beer_schema = new Schema({
     id_beer: {
-        type: Number,
+        type: String,
     },
     name: {
         type: String,
     },
     brand: {
         type: String,
+    },
+    description: {
+        type: String
     }
 });
 

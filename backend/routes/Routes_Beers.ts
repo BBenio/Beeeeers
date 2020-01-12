@@ -13,15 +13,15 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-    const {name} = req.body;
-    repository.create(name)
+    const {name, brand, description, price} = req.body;
+    repository.create(name, brand, description, price)
         .then((beer: BeerInterface) => {
             res.json(beer);
         }).catch((error: Error) => console.log(error));
 });
 
 app.delete("/:id", (req, res) => {
-    const id = req.params;
+    const {id} = req.params;
     repository.deleteById(id).then((ok: any) => {
         console.log(ok);
         console.log("Delete record " + id + "done.");
@@ -30,9 +30,10 @@ app.delete("/:id", (req, res) => {
 });
 
 app.put("/:id", (req, res) => {
-    const id = req.params;
-    const beer: BeerInterface = {id_beer: id, name: req.body.name, brand: req.body.brand};
-    repository.updateById(id, beer)
+    const {id} = req.params;
+    const beer: BeerInterface = {id_beer: req.body.id_beer, name: req.body.name, brand: req.body.brand, description: req.body.description};
+    const {new_price} = req.body;
+    repository.updateById(id, beer, new_price)
         .then(res.status(200).json([]))
         .catch((error: any) => console.log(error))
 });

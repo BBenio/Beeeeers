@@ -13,16 +13,17 @@ import {config_beers} from "./config/Config";
 const routes_todos = require('./routes/Routes_Todos');
 const routes_beers = require('./routes/Routes_Beers');
 const app = express();
-console.log("Begining connects");
-// mongoose.connect(config_todos.DB, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }).then(() => console.log("Todos connects")).catch((err: any) => console.log(err));
 
-mongoose.connect(config_beers.DB, {
+console.log("Begining connects");
+mongoose.connect(config_todos.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(() => console.log("Beers connects")).catch((err: any) => console.log(err));
+}).then(() => console.log("Todos connects")).catch((err: any) => console.log(err));
+
+// mongoose.connect(config_beers.DB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }).then(() => console.log("Beers connects")).catch((err: any) => console.log(err));
 
 app.use(cors());
 
@@ -53,5 +54,4 @@ app.use((err, req, res) => {
 
 app.listen(config_todos.APP_PORT); // Listen on port defined in environment
 app.listen(config_beers.APP_PORT); // Listen on port defined in environment
-
 module.exports = app;
