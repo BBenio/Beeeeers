@@ -14,10 +14,10 @@ const routes_todos = require('./routes/Routes_Todos');
 const routes_beers = require('./routes/Routes_Beers');
 const app = express();
 console.log("Begining connects");
-mongoose.connect(config_todos.DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log("Todos connects")).catch((err: any) => console.log(err));
+// mongoose.connect(config_todos.DB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }).then(() => console.log("Todos connects")).catch((err: any) => console.log(err));
 
 mongoose.connect(config_beers.DB, {
     useNewUrlParser: true,
