@@ -12,6 +12,13 @@ app.get("/", (req, res) => {
         .catch((error: Error) => console.log(error));
 });
 
+app.get("/:id", (req, res) => {
+    const {id} = req.params;
+    repository.findById(id).then((beer: BeerInterface) => {
+        res.json(beer);
+    })
+});
+
 app.post("/", (req, res) => {
     const {name, brand, description, price} = req.body;
     repository.create(name, brand, description, price)

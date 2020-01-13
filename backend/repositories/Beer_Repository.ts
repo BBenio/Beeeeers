@@ -17,7 +17,7 @@ class Beer_Repository {
         return Promise.all([beer.save(), BeerPrice_Repository.create(beer.id_beer, price)]);
     }
 
-    async findAll() {
+    findAll() {
         return this.model.find();
     }
 
@@ -25,7 +25,7 @@ class Beer_Repository {
         return this.model.findById(id);
     }
 
-    async deleteById(id: any) {
+    deleteById(id: any) {
         this.findById(id).then(async (beer: BeerInterface | null) => {
             if (beer) {
                 await BeerPrice_Repository.deleteByIdBeer(beer.id_beer);
@@ -35,11 +35,13 @@ class Beer_Repository {
         return this.model.findByIdAndDelete(id);
     }
 
-    async updateById(id: any, beer: BeerInterface, new_price: number) {
+    updateById(id: any, beer: BeerInterface, new_price: number) {
         const query = {_id: id};
 
-        await this.model.findOneAndUpdate(query, {$set: {name: beer.name, brand: beer.brand, description: beer.description}});
-        return BeerPrice_Repository.create(beer.id_beer, new_price);
+        return Promise.all([
+            this.model.findOneAndUpdate(query, {$set: {name: beer.name, brand: beer.brand, description: beer.description}}),
+            BeerPrice_Repository.create(beer.id_beer, new_price)
+        ]);
     }
 }
 
