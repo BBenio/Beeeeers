@@ -1,9 +1,6 @@
 import {Model, model, Schema} from "mongoose";
 
 const beer_schema = new Schema({
-    id_beer: {
-        type: String,
-    },
     name: {
         type: String,
     },

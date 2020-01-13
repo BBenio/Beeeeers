@@ -29,7 +29,7 @@ class BeerPrice_Repository {
     }
 
     deleteByIdBeer(id: string) {
-        return this.model.deleteMany({id_beer: "My beersbenio"});
+        return this.model.deleteMany({id_beer: id});
     }
 
     updateById(id: any, object: BeerPriceInterface) {

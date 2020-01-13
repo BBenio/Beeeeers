@@ -10,11 +10,12 @@ class Beer_Repository {
         this.model = model;
     }
 
-    create(name: string, brand: string, description: string, price: number) {
-        const id_beer = name+brand;
-        const new_beer: BeerInterface = {id_beer, name, brand, description};
+    async create(name: string, brand: string, description: string, price: number) {
+        const new_beer: BeerInterface = {name, brand, description};
         const beer = new this.model(new_beer);
-        return Promise.all([beer.save(), BeerPrice_Repository.create(beer.id_beer, price)]);
+        const beer_created = await beer.save();
+        await BeerPrice_Repository.create(beer_created.id, price);
+        return;
     }
 
     findAll() {
@@ -26,13 +27,7 @@ class Beer_Repository {
     }
 
     deleteById(id: any) {
-        this.findById(id).then(async (beer: BeerInterface | null) => {
-            if (beer) {
-                await BeerPrice_Repository.deleteByIdBeer(beer.id_beer);
-            }
-        });
-
-        return this.model.findByIdAndDelete(id);
+        return Promise.all([BeerPrice_Repository.deleteByIdBeer(id), this.model.findByIdAndDelete(id)]);
     }
 
     updateById(id: any, beer: BeerInterface, new_price: number) {
@@ -40,7 +35,7 @@ class Beer_Repository {
 
         return Promise.all([
             this.model.findOneAndUpdate(query, {$set: {name: beer.name, brand: beer.brand, description: beer.description}}),
-            BeerPrice_Repository.create(beer.id_beer, new_price)
+            BeerPrice_Repository.create(id, new_price)
         ]);
     }
 }
