@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BeersService {
-  uri = 'http://localhost:4200';
+  uri = 'http://localhost';
 
   constructor(private http: HttpClient) {
 
@@ -19,7 +19,17 @@ export class BeersService {
     return this.http.get(`${this.uri}/beers/${id}`);
   }
 
-  addBeer() {
+  addBeer(name, brand, description, price) {
+    const beer = {
+      name,
+      brand,
+      description,
+      price
+    };
+    return this.http.post(`${this.uri}/beers`, beer);
+  }
 
+  deleteIssue(id) {
+    return this.http.delete(`${this.uri}/beers/${id}`);
   }
 }
