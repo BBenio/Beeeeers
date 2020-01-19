@@ -33,4 +33,24 @@ export class BeersService {
   deleteIssue(id) {
     return this.http.delete(`${this.uri}/beers/${id}`);
   }
+
+  addPriceOnBeer(id, newPrice) {
+    console.log("hfhfhf")
+    console.log(id)
+    console.log(newPrice)
+    const price = {
+      new_price: newPrice
+    };
+    console.log(`${this.uri}/beers/new_price/${id}`)
+    return this.http.put(`${this.uri}/beers/new_price/${id}`, price);
+  }
+
+  editBeer(id, name, brand, description) {
+    const beer = {
+      name,
+      brand,
+      description
+    };
+    return this.http.put(`${this.uri}/beers/edit/${id}`, beer);
+  }
 }

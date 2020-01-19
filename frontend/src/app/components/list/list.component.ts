@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { Beer } from '../../beer.model';
 import { BeersService} from '../../beers.service';
+import {MatDialog} from '@angular/material';
+import {DialogAddPriceComponent} from '../dialog-add-price/dialog-add-price.component';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +16,7 @@ export class ListComponent implements OnInit {
   beers: Beer[];
   displayedColumns = ['name', 'brand', 'description', 'actions'];
 
-  constructor(private beersService: BeersService, private router: Router) { }
+  constructor(private beersService: BeersService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.fetchBeers();
@@ -34,5 +36,31 @@ export class ListComponent implements OnInit {
 
   deleteBeers(id) {
     this.beersService.deleteIssue(id).subscribe(() => this.fetchBeers());
+  }
+
+  addPrice(id, newPrice) {
+    this.beersService.addPriceOnBeer(id, newPrice).subscribe( () => {});
+  }
+
+  openDialog(id): void {
+    if (id) {
+      this.beersService.getBeerById(id).subscribe((beer: Beer) => {
+        const dialogRef = this.dialog.open(DialogAddPriceComponent, {
+          width: '250px',
+          data: beer
+        });
+
+        dialogRef.afterClosed().subscribe(async result => {
+          console.log('The dialog was closed');
+          console.log(result);
+          if (result) {
+            console.log("There is a new price");
+            this.addPrice(id, result);
+          }
+        });
+      });
+    } else {
+      throw new Error('Can\'t open dialog because no id');
+    }
   }
 }

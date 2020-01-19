@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { MatToolbarModule,
+import {
+  MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
   MatOptionModule,
@@ -11,7 +12,10 @@ import { MatToolbarModule,
   MatCardModule,
   MatTableModule,
   MatDividerModule,
-  MatSnackBarModule } from '@angular/material';
+  MatSnackBarModule,
+  MatPaginatorModule,
+  MatDialogModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +25,8 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { BeersService } from './beers.service';
 import {HttpClientModule} from '@angular/common/http';
+import { DialogAddPriceComponent } from './components/dialog-add-price/dialog-add-price.component';
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent},
@@ -34,7 +40,8 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    DialogAddPriceComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +58,13 @@ const routes: Routes = [
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [BeersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogAddPriceComponent]
 })
 export class AppModule { }

@@ -1,31 +1,31 @@
 <div>
-  <br>
   <mat-card>
     <button mat-raised-button color="primary" routerLink="/create">Create New Beer</button>
     <br><br>
     <mat-divider></mat-divider>
     <br>
-    <table mat-table [dataSource]="beers">
+    <table mat-table [dataSource]="beers" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let beer"> {{beer.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="brand">
-        <th mat-header-cell *matHeaderCellDef> Brand </th>
-        <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+        <th mat-header-cell *matHeaderCellDef> Brand</th>
+        <td mat-cell *matCellDef="let beer"> {{beer.brand}} </td>
       </ng-container>
 
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        <th mat-header-cell *matHeaderCellDef> Description</th>
+        <td mat-cell *matCellDef="let beer"> {{beer.description}} </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef class="mat-column-right"> Actions </th>
-        <td mat-cell *matCellDef="let element" class="mat-column-right">
-          <button mat-button color="primary" (click)="editBeers(element._id)">Edit</button>
-          <button mat-button color="warn" (click)="deleteBeers(element._id)">Delete</button>
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right"> Actions</th>
+        <td mat-cell *matCellDef="let beer" class="mat-column-right">
+          <button mat-button color="primary" (click)="editBeers(beer._id)">Edit</button>
+          <button mat-button color="primary" (click)="openDialog(beer._id)">Add new Price</button>
+          <button mat-button color="warn" (click)="deleteBeers(beer._id)">Delete</button>
         </td>
       </ng-container>
 
