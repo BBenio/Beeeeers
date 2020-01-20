@@ -36,11 +36,18 @@ app.delete("/:id", (req, res) => {
     }).catch((error: any) => console.log(error));
 });
 
-app.put("/:id", (req, res) => {
+app.put("/new_price/:id", (req, res) => {
     const {id} = req.params;
-    const beer: BeerInterface = {id_beer: req.body.id_beer, name: req.body.name, brand: req.body.brand, description: req.body.description};
     const {new_price} = req.body;
-    repository.updateById(id, beer, new_price)
+    repository.addPrice(id, new_price)
+        .then(res.status(200).json([]))
+        .catch((error: any) => console.log(error))
+});
+
+app.put("/edit/:id", (req, res) => {
+    const {id} = req.params;
+    const beer: BeerInterface = {name: req.body.name, brand: req.body.brand, description: req.body.description};
+    repository.updateById(id, beer)
         .then(res.status(200).json([]))
         .catch((error: any) => console.log(error))
 });

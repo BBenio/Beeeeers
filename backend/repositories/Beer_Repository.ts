@@ -30,13 +30,17 @@ class Beer_Repository {
         return Promise.all([BeerPrice_Repository.deleteByIdBeer(id), this.model.findByIdAndDelete(id)]);
     }
 
-    updateById(id: any, beer: BeerInterface, new_price: number) {
-        const query = {_id: id};
+    addPrice(id: any, new_price: number | null) {
+        if (new_price) {
+            return BeerPrice_Repository.create(id, new_price);
+        }
 
-        return Promise.all([
-            this.model.findOneAndUpdate(query, {$set: {name: beer.name, brand: beer.brand, description: beer.description}}),
-            BeerPrice_Repository.create(id, new_price)
-        ]);
+        throw new Error("No new price");
+    }
+
+    updateById(id: any, beer: BeerInterface) {
+        const query = {_id: id};
+        return this.model.findOneAndUpdate(query, {$set: {name: beer.name, brand: beer.brand, description: beer.description}})
     }
 }
 
