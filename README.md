@@ -5,7 +5,7 @@ Follow some prices of beers and have some graphs.
 - `cd backend`
 - `npm i && npm run dev`
 
-    _If you want run a server in another port, you can create a `.end` file in this directory and use a variable like
+    _If you want run a server in another port, you can create a `.env` file in this directory and use a variable like
 `APP_PORT_BEER=128`_
     
     /!\ Please be sure to replace the same port in `frontend/src/environments/environment`
