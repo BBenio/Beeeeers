@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   beers: Beer[];
   displayedColumns = ['name', 'brand', 'description', 'actions'];
 
-  constructor(private beersService: BeersService, private router: Router, public dialog: MatDialog) { }
+  constructor(private beersService: BeersService, private router: Router, public dialogAddPrice: MatDialog) { }
 
   ngOnInit() {
     this.fetchBeers();
@@ -42,16 +42,16 @@ export class ListComponent implements OnInit {
     this.beersService.addPriceOnBeer(id, newPrice).subscribe( () => {});
   }
 
-  openDialog(id): void {
+  openDialogAddPrice(id): void {
     if (id) {
       this.beersService.getBeerById(id).subscribe((beer: Beer) => {
-        const dialogRef = this.dialog.open(DialogAddPriceComponent, {
+        const dialogRef = this.dialogAddPrice.open(DialogAddPriceComponent, {
           width: '250px',
           data: beer
         });
 
         dialogRef.afterClosed().subscribe(async result => {
-          console.log('The dialog was closed');
+          console.log('The dialogAddPrice was closed');
           console.log(result);
           if (result) {
             console.log("There is a new price");
@@ -60,7 +60,7 @@ export class ListComponent implements OnInit {
         });
       });
     } else {
-      throw new Error('Can\'t open dialog because no id');
+      throw new Error('Can\'t open dialogAddPrice because no id');
     }
   }
 }

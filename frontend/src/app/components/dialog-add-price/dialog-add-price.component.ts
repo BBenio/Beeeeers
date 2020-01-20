@@ -16,7 +16,7 @@ export class DialogAddPriceComponent implements OnInit {
   ngOnInit() {
   }
 
-  onNoClick(): void {
+  onCancel(): void {
     this.dialogRef.close();
   }
 
