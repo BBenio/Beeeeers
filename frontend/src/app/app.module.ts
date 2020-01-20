@@ -17,7 +17,6 @@ import {
   MatDialogModule
 } from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
@@ -26,7 +25,8 @@ import { EditComponent } from './components/edit/edit.component';
 import { BeersService } from './beers.service';
 import {HttpClientModule} from '@angular/common/http';
 import { DialogAddPriceComponent } from './components/dialog-add-price/dialog-add-price.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import { DialogEditComponent } from './components/dialog-edit/dialog-edit.component';
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent},
@@ -41,7 +41,8 @@ const routes: Routes = [
     ListComponent,
     CreateComponent,
     EditComponent,
-    DialogAddPriceComponent
+    DialogAddPriceComponent,
+    DialogEditComponent
   ],
   imports: [
     BrowserModule,
