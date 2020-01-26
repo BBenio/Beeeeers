@@ -66,6 +66,6 @@ const routes: Routes = [
   ],
   providers: [BeersService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogAddPriceComponent]
+  entryComponents: [DialogAddPriceComponent, DialogEditComponent]
 })
 export class AppModule { }

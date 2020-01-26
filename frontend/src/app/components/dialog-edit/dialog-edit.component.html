@@ -1,1 +1,26 @@
-<p>dialog-edit works!</p>
+<h1 mat-dialog-title>For the beeeeeers: {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Change if you want</p>
+  <mat-form-field>
+    <label>
+      Name:
+      <input type="text" matInput [(ngModel)]="data.name">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      Brand:
+      <input type="text" matInput [(ngModel)]="data.brand">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      Description:
+      <input type="text" matInput [(ngModel)]="data.description">
+    </label>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">No Thanks</button>
+  <button mat-button (click)="onClick()"cdkFocusInitial>Ok</button>
+</div>

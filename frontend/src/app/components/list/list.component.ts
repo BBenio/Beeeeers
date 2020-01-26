@@ -5,6 +5,7 @@ import { Beer } from '../../beer.model';
 import { BeersService} from '../../beers.service';
 import {MatDialog} from '@angular/material';
 import {DialogAddPriceComponent} from '../dialog-add-price/dialog-add-price.component';
+import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 
 @Component({
   selector: 'app-list',
@@ -30,8 +31,20 @@ export class ListComponent implements OnInit {
     });
   }
 
-  editBeers(id) {
-    this.router.navigate([`/edit/${id}`]);
+  openDialogEditBeer(id: number, beer: Beer) {
+      const dialogRef = this.dialogAddPrice.open(DialogEditComponent, {
+        width: '250px',
+        data: beer
+      });
+
+      dialogRef.afterClosed().subscribe(async result => {
+        console.log('The DialogEdit was closed');
+        if (result) {
+          console.log('Updated beer');
+          this.editBeer(id, beer);
+          this.fetchBeers();
+        }
+      });
   }
 
   deleteBeers(id) {
@@ -42,25 +55,23 @@ export class ListComponent implements OnInit {
     this.beersService.addPriceOnBeer(id, newPrice).subscribe( () => {});
   }
 
-  openDialogAddPrice(id): void {
-    if (id) {
-      this.beersService.getBeerById(id).subscribe((beer: Beer) => {
-        const dialogRef = this.dialogAddPrice.open(DialogAddPriceComponent, {
-          width: '250px',
-          data: beer
-        });
+  editBeer(id, beer) {
+    this.beersService.editBeer(id, beer.name, beer.brand, beer.description).subscribe(() => this.fetchBeers());
+  }
 
-        dialogRef.afterClosed().subscribe(async result => {
-          console.log('The dialogAddPrice was closed');
-          console.log(result);
-          if (result) {
-            console.log("There is a new price");
-            this.addPrice(id, result);
-          }
-        });
+  openDialogAddPrice(id: number, beer: Beer): void {
+      const dialogRef = this.dialogAddPrice.open(DialogAddPriceComponent, {
+        width: '250px',
+        data: beer
       });
-    } else {
-      throw new Error('Can\'t open dialogAddPrice because no id');
-    }
+
+      dialogRef.afterClosed().subscribe(async result => {
+        console.log('The dialogAddPrice was closed');
+        console.log(result);
+        if (result) {
+          console.log('There is a new price');
+          this.addPrice(id, result);
+        }
+      });
   }
 }
