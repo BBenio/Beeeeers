@@ -27,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { DialogAddPriceComponent } from './components/dialog-add-price/dialog-add-price.component';
 import {FormsModule} from '@angular/forms';
 import { DialogEditComponent } from './components/dialog-edit/dialog-edit.component';
+import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
     CreateComponent,
     EditComponent,
     DialogAddPriceComponent,
-    DialogEditComponent
+    DialogEditComponent,
+    DialogDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,6 @@ const routes: Routes = [
   ],
   providers: [BeersService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogAddPriceComponent, DialogEditComponent]
+  entryComponents: [DialogAddPriceComponent, DialogEditComponent, DialogDeleteComponent]
 })
 export class AppModule { }
