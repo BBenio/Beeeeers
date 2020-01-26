@@ -20,8 +20,6 @@ import {
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
-import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './components/edit/edit.component';
 import { BeersService } from './beers.service';
 import {HttpClientModule} from '@angular/common/http';
 import { DialogAddPriceComponent } from './components/dialog-add-price/dialog-add-price.component';
@@ -30,8 +28,6 @@ import { DialogEditComponent } from './components/dialog-edit/dialog-edit.compon
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 
 const routes: Routes = [
-  {path: 'create', component: CreateComponent},
-  {path: 'edit/:id', component: EditComponent},
   {path: 'list', component: ListComponent},
   {path: '', redirectTo: '/list', pathMatch: 'full'}
 ];
@@ -40,8 +36,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ListComponent,
-    CreateComponent,
-    EditComponent,
     DialogAddPriceComponent,
     DialogEditComponent,
     DialogDeleteComponent
