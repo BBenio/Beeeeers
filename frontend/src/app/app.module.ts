@@ -23,9 +23,10 @@ import { ListComponent } from './components/list/list.component';
 import { BeersService } from './beers.service';
 import {HttpClientModule} from '@angular/common/http';
 import { DialogAddPriceComponent } from './components/dialog-add-price/dialog-add-price.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DialogEditComponent } from './components/dialog-edit/dialog-edit.component';
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
+import { DialogAddBeerComponent } from './components/dialog-add-beer/dialog-add-beer.component';
 
 const routes: Routes = [
   {path: 'list', component: ListComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
     ListComponent,
     DialogAddPriceComponent,
     DialogEditComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    DialogAddBeerComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +60,11 @@ const routes: Routes = [
     MatSnackBarModule,
     MatPaginatorModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [BeersService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogAddPriceComponent, DialogEditComponent, DialogDeleteComponent]
+  entryComponents: [DialogAddPriceComponent, DialogEditComponent, DialogDeleteComponent, DialogAddBeerComponent]
 })
 export class AppModule { }

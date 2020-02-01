@@ -1,0 +1,31 @@
+<div mat-dialog-content>
+  <p>Create a new Beeeeeers!</p>
+  <mat-form-field>
+    <label>
+      Name:
+      <input type="text" matInput [formControl]="name">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      Brand:
+      <input type="text" matInput [formControl]="brand">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      Description:
+      <input type="text" matInput [formControl]="description">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      Price:
+      <input type="number" matInput [formControl]="price" required>
+    </label>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">No Thanks</button>
+  <button mat-button (click)="onClick()"cdkFocusInitial ng-required="price"> Ok</button>
+</div>

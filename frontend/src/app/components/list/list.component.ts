@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material';
 import {DialogAddPriceComponent} from '../dialog-add-price/dialog-add-price.component';
 import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
+import {DialogAddBeerComponent} from '../dialog-add-beer/dialog-add-beer.component';
 
 @Component({
   selector: 'app-list',
@@ -18,7 +19,14 @@ export class ListComponent implements OnInit {
   beers: Beer[];
   displayedColumns = ['name', 'brand', 'description', 'actions'];
 
-  constructor(private beersService: BeersService, private router: Router, public dialogAddPrice: MatDialog, public dialogEdit: MatDialog, public dialogDelete: MatDialog) { }
+  constructor(
+    private beersService: BeersService, 
+    private router: Router, 
+    public dialogAddPrice: MatDialog, 
+    public dialogEdit: MatDialog, 
+    public dialogDelete: MatDialog,
+    public dialogCreate: MatDialog
+    ) { }
 
   ngOnInit() {
     this.fetchBeers();
@@ -62,6 +70,24 @@ export class ListComponent implements OnInit {
           this.fetchBeers();
         }
     })
+  }
+
+  openDialogCreateBeer() {
+    const dialogRef = this.dialogCreate.open(DialogAddBeerComponent, {
+      width: 'auto'
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      console.log('The dialogAddBeer was closed');
+      if (result) {
+        console.log("add beer");
+        this.createBeer(result.beer, result.price);
+      }
+    })
+  }
+
+  createBeer(beer: Beer, price: number) {
+    this.beersService.addBeer(beer.name, beer.brand, beer.description, price).subscribe(() => this.fetchBeers());
   }
 
   deleteBeers(id) {
