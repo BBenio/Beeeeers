@@ -51,7 +51,6 @@ export class ListComponent implements OnInit {
         if (result) {
           console.log('Updated beer');
           this.editBeer(id, beer);
-          this.fetchBeers();
         }
       });
   }
@@ -67,7 +66,7 @@ export class ListComponent implements OnInit {
         if (result) {
           console.log('Deleted beer');
           this.deleteBeers(id);
-          this.fetchBeers();
+        
         }
     })
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {Beer} from '../../beer.model';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-add-price',
@@ -9,7 +10,7 @@ import {Beer} from '../../beer.model';
 })
 export class DialogAddPriceComponent implements OnInit {
 
-  newPrice: number;
+  newPrice = new FormControl('');
 
   constructor(public dialogRef: MatDialogRef<DialogAddPriceComponent>, @Inject(MAT_DIALOG_DATA) public data: Beer) { }
 
@@ -21,6 +22,8 @@ export class DialogAddPriceComponent implements OnInit {
   }
 
   onClick(): void {
-    this.dialogRef.close(this.newPrice);
+    if (this.newPrice.value !== "") {
+      this.dialogRef.close(this.newPrice);
+    }
   }
 }

@@ -1,11 +1,9 @@
 <h1 mat-dialog-title>For the beeeeeers: {{data.name}}</h1>
 <div mat-dialog-content>
   <p>What's the new price?</p>
-  <mat-form-field>
-    <label>
-      <input type="number" matInput [(ngModel)]="newPrice">
-    </label>
-  </mat-form-field>
+  <mat-form-field [floatLabel]="auto">
+    <input type="number" matInput placeholder="Price" [(ngModel)]="newPrice" required>
+</mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">No Thanks</button>

@@ -1,23 +1,18 @@
 <h1 mat-dialog-title>For the beeeeeers: {{data.name}}</h1>
 <div mat-dialog-content>
   <p>Change if you want</p>
-  <mat-form-field>
-    <label>
-      Name:
-      <input type="text" matInput [(ngModel)]="data.name">
-    </label>
+  <mat-form-field
+  [hideRequiredMarker]="false"
+  [floatLabel]="auto" class="ng-invalid">
+    <input type="text" matInput placeholder="Name" [formControl]="name" required>
   </mat-form-field>
-  <mat-form-field>
-    <label>
-      Brand:
-      <input type="text" matInput [(ngModel)]="data.brand">
-    </label>
+  <mat-form-field
+  [hideRequiredMarker]="false"
+  [floatLabel]="auto">
+    <input type="text" matInput placeholder="Brand" [formControl]="brand" required>
   </mat-form-field>
-  <mat-form-field>
-    <label>
-      Description:
-      <input type="text" matInput [(ngModel)]="data.description">
-    </label>
+  <mat-form-field [hideRequiredMarker]="true" [floatLabel]="auto">
+    <input type="text" matInput placeholder="Description" [formControl]="description">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

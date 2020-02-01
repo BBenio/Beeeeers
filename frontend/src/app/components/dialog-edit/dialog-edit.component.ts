@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Beer } from 'src/app/beer.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-edit',
@@ -10,8 +11,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class DialogEditComponent implements OnInit {
 
   beer: Beer;
+  name = new FormControl('');
+  description = new FormControl('');
+  brand = new FormControl('');
+  
+  class_ng_invalid: boolean = false;
   constructor(public dialogRef: MatDialogRef<DialogEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Beer) { 
     this.beer = data;
+    this.name.setValue(data.name);
+    this.brand.setValue(data.brand);
+    this.description.setValue(data.description);
   }
 
   ngOnInit() {
@@ -22,7 +31,12 @@ export class DialogEditComponent implements OnInit {
   }
 
   onClick(): void {
-    this.dialogRef.close(this.beer);
-  }
+    if (this.name.value !== "" && this.brand.value !== "") {
+      this.beer.name = this.name.value;
+      this.beer.brand = this.brand.value;
+      this.beer.description = this.description.value;
 
+      this.dialogRef.close(this.beer);
+    }
+  }
 }
