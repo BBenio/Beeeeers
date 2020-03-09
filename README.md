@@ -1,13 +1,16 @@
 # Beeeeers
 Follow some prices of beers and have some graphs.
 
+## Run all with one line
+#### `npm run dev` in this folder
+
 ### Run Server
-- `cd backend`
+- `cd backend
 - `npm i && npm run dev`
 
     _If you want run a server in another port, you can create a `.env` file in this directory and use a variable like
 `APP_PORT_BEER=128`_
-    
+
     /!\ Please be sure to replace the same port in `frontend/src/environments/environment`
 ### Run App Angular
 - `cd frontend`

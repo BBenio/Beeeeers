@@ -1,0 +1,25 @@
+{
+  "name": "beeeeers",
+  "version": "1.0.0",
+  "description": "Follow some prices of beers and have some graphs.",
+  "main": "frontend/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd frontend && npm run start",
+    "server": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BBenio/Beeeeers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BBenio/Beeeeers/issues"
+  },
+  "homepage": "https://github.com/BBenio/Beeeeers#readme",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
