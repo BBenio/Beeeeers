@@ -17,7 +17,7 @@ import {DialogAddBeerComponent} from '../dialog-add-beer/dialog-add-beer.compone
 export class ListComponent implements OnInit {
 
   beers: Beer[];
-  displayedColumns = ['name', 'brand', 'description', 'actions'];
+  displayedColumns = ['name', 'description', 'actions'];
 
   constructor(
     private beersService: BeersService, 
@@ -86,7 +86,7 @@ export class ListComponent implements OnInit {
   }
 
   createBeer(beer: Beer, price: number) {
-    this.beersService.addBeer(beer.name, beer.brand, beer.description, price).subscribe(() => this.fetchBeers());
+    this.beersService.addBeer(beer.name, beer.description, price).subscribe(() => this.fetchBeers());
   }
 
   deleteBeers(id) {
@@ -98,7 +98,7 @@ export class ListComponent implements OnInit {
   }
 
   editBeer(id, beer) {
-    this.beersService.editBeer(id, beer.name, beer.brand, beer.description).subscribe(() => this.fetchBeers());
+    this.beersService.editBeer(id, beer.name, beer.description).subscribe(() => this.fetchBeers());
   }
 
   openDialogAddPrice(id: number, beer: Beer): void {

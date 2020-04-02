@@ -13,7 +13,6 @@ export class DialogAddBeerComponent implements OnInit {
 
   name = new FormControl('');
   description = new FormControl('');
-  brand = new FormControl('');
   price = new FormControl('');
   options: FormGroup;
 
@@ -32,11 +31,10 @@ export class DialogAddBeerComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.name.value !== "" && this.brand.value !== "" && this.price.value !== "") {
+    if (this.name.value !== "" && this.price.value !== "") {
       let beer = {
         name: this.name.value,
         description: this.description.value,
-        brand: this.brand.value
       };
   
       this.dialogRef.close({beer, price: this.price.value});

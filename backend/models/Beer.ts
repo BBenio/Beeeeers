@@ -4,9 +4,6 @@ const beer_schema = new Schema({
     name: {
         type: String,
     },
-    brand: {
-        type: String,
-    },
     description: {
         type: String
     }
