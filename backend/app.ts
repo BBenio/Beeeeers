@@ -44,5 +44,5 @@ app.use((err, req, res) => {
     res.render('error');
 });
 
-app.listen(config_beers.APP_PORT); // Listen on port defined in environment
+app.listen(config_beers.APP_PORT, config_beers.IP_ADDR); // Listen on port defined in environment
 module.exports = app;

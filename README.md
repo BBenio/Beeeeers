@@ -1,21 +1,38 @@
 # Beeeeers
 Follow some prices of beers and have some graphs.
 
-## Run all with one line
-#### `npm run dev` in this folder
+# Please follow this to have the app
+- (Not Mandatory) Create a `.env` here with this data :
+````
+    MONGO_URL_BEER=my_mongdb_url:my_port/collections
+    APP_PORT_BEER=your_port
+    IP_ADDR=your_ip
+````
+
+- Create `frontend/src/environments/environment.ts` with this data:
+```
+    export const environment = {
+        production: false,
+        apiUrl: 'your_ip:the_port_of_backend'
+    };
+```
+
+_You can change all `your_ip` with localhost
 
 ### Run Server
-- `cd backend
+- `cd backend`
 - `npm i && npm run dev`
 
-    _If you want run a server in another port, you can create a `.env` file in this directory and use a variable like
-`APP_PORT_BEER=128`_
-
-    /!\ Please be sure to replace the same port in `frontend/src/environments/environment`
 ### Run App Angular
 - `cd frontend`
 - `npm i && npm run start`
 
-    _If you want run the front in another port, you can run `npm i && npm run start -- --port=2341`_
+    _If you want run the front in another port or ip, you can run :
+    ``
+    npm i && npm run start -- --host your_ip --port=your_port
+    ``_
 
-- And go to `localhost:YOUR_PORT`
+- And go to `your_ip:your_port`
+
+## Run all with one line
+#### `npm run dev` in this folder
