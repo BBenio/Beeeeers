@@ -14,7 +14,8 @@ import {
   MatDividerModule,
   MatSnackBarModule,
   MatPaginatorModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSortModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -61,7 +62,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSortModule
   ],
   providers: [BeersService],
   bootstrap: [AppComponent],

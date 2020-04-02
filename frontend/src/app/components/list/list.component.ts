@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Beer } from '../../beer.model';
 import { BeersService} from '../../beers.service';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSort} from '@angular/material';
+import {MatTableDataSource} from '@angular/material/table';
+
 import {DialogAddPriceComponent} from '../dialog-add-price/dialog-add-price.component';
 import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
@@ -18,6 +20,9 @@ export class ListComponent implements OnInit {
 
   beers: Beer[];
   displayedColumns = ['name', 'description', 'actions'];
+  dataSource;
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
     private beersService: BeersService, 
@@ -35,8 +40,8 @@ export class ListComponent implements OnInit {
   fetchBeers() {
     this.beersService.getBeers().subscribe((data: Beer[]) => {
       this.beers = data;
-      console.log('Beers requested ...');
-      console.log(this.beers);
+      this.dataSource = new MatTableDataSource(this.beers);
+      this.dataSource.sort = this.sort;
     });
   }
 
