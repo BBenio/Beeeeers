@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>For the beeeeeers: {{data.name}}</h1>
-<div mat-dialog-content>
+<div mat-dialog-content (keydown.enter)="onClick()">
   <p>What's the new price?</p>
   <mat-form-field [floatLabel]="auto">
     <input type="number" matInput placeholder="Price" [(ngModel)]="newPrice" required>
