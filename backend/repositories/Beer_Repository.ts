@@ -10,8 +10,8 @@ class Beer_Repository {
         this.model = model;
     }
 
-    async create(name: string, description: string, price: number) {
-        const new_beer: BeerInterface = {name, description};
+    async create(name: string, description: string, containt: string, price: number) {
+        const new_beer: BeerInterface = {name, description, containt};
         const beer = new this.model(new_beer);
         const beer_created = await beer.save();
         await BeerPrice_Repository.create(beer_created.id, price);
@@ -40,7 +40,7 @@ class Beer_Repository {
 
     updateById(id: any, beer: BeerInterface) {
         const query = {_id: id};
-        return this.model.findOneAndUpdate(query, {$set: {name: beer.name, description: beer.description}})
+        return this.model.findOneAndUpdate(query, {$set: {name: beer.name, description: beer.description, containt: beer.containt}})
     }
 }
 

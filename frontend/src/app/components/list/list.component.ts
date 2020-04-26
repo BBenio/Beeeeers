@@ -47,7 +47,7 @@ export class ListComponent implements OnInit {
 
   openDialogEditBeer(id: number, beer: Beer) {
       const dialogRef = this.dialogEdit.open(DialogEditComponent, {
-        width: '250px',
+        width: '1000px',
         data: beer
       });
 
@@ -91,7 +91,7 @@ export class ListComponent implements OnInit {
   }
 
   createBeer(beer: Beer, price: number) {
-    this.beersService.addBeer(beer.name, beer.description, price).subscribe(() => this.fetchBeers());
+    this.beersService.addBeer(beer.name, beer.description, beer.containt, price).subscribe(() => this.fetchBeers());
   }
 
   deleteBeers(id) {
@@ -103,7 +103,8 @@ export class ListComponent implements OnInit {
   }
 
   editBeer(id, beer) {
-    this.beersService.editBeer(id, beer.name, beer.description).subscribe(() => this.fetchBeers());
+    console.log(beer);
+    this.beersService.editBeer(id, beer.name, beer.description, beer.containt).subscribe(() => this.fetchBeers());
   }
 
   openDialogAddPrice(id: number, beer: Beer): void {

@@ -11,6 +11,10 @@
   <mat-form-field [floatLabel]="auto">
       <input type="number" matInput placeholder="Price" [formControl]="price" required>
   </mat-form-field>
+  <mat-radio-group aria-label="Selectionne un contenant" [formControl]="containt">
+    <mat-radio-button value="fut">Fût</mat-radio-button>
+    <mat-radio-button value="bouteille">Bouteille</mat-radio-button>
+  </mat-radio-group>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">No Thanks</button>

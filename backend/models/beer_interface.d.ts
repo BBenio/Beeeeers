@@ -8,6 +8,7 @@ export interface BeerModelInterface extends Document {
 export interface BeerInterface {
     name: string;
     description: string;
+    containt: string;
 }
 
 export interface BeerPriceModelInterface extends Document {

@@ -6,6 +6,9 @@ const beer_schema = new Schema({
     },
     description: {
         type: String
+    },
+    containt: {
+        type: String
     }
 });
 

@@ -20,10 +20,11 @@ export class BeersService {
     return this.http.get(`${this.uri}/beers/${id}`);
   }
 
-  addBeer(name, description, price) {
+  addBeer(name, description, containt, price) {
     const beer = {
       name,
       description,
+      containt,
       price
     };
     return this.http.post(`${this.uri}/beers`, beer);
@@ -44,10 +45,11 @@ export class BeersService {
     return this.http.put(`${this.uri}/beers/new_price/${id}`, price);
   }
 
-  editBeer(id, name, description) {
+  editBeer(id, name, description, containt) {
     const beer = {
       name,
-      description
+      description,
+      containt
     };
     return this.http.put(`${this.uri}/beers/edit/${id}`, beer);
   }

@@ -1,16 +1,22 @@
-<h1 mat-dialog-title>For the beeeeeers: {{data.name}}</h1>
-<div mat-dialog-content (keydown.enter)="onClick()">
-  <p>Change if you want</p>
-  <mat-form-field
-  [hideRequiredMarker]="false"
-  [floatLabel]="auto" class="ng-invalid">
-    <input type="text" matInput placeholder="Name" [formControl]="name" required>
-  </mat-form-field>
-  <mat-form-field [hideRequiredMarker]="true" [floatLabel]="auto">
-    <input type="text" matInput placeholder="Description" [formControl]="description">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">No Thanks</button>
-  <button mat-button (click)="onClick()"cdkFocusInitial>Ok</button>
+<div class="dialog-edit">
+  <h1 mat-dialog-title>For the beeeeeers: {{data.name}}</h1>
+  <div mat-dialog-content (keydown.enter)="onClick()">
+    <p>Change if you want</p>
+    <mat-form-field
+    [hideRequiredMarker]="false"
+    [floatLabel]="auto" class="ng-invalid">
+      <input type="text" matInput placeholder="Name" [formControl]="name" required>
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="true" [floatLabel]="auto">
+      <input type="text" matInput placeholder="Description" [formControl]="description">
+    </mat-form-field>
+    <mat-radio-group aria-label="Selectionne un contenant" [formControl]="containt">
+      <mat-radio-button class="button-chose" value="fut">Fût</mat-radio-button>
+      <mat-radio-button class="button-chose" value="bouteille">Bouteille</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">No Thanks</button>
+    <button mat-button (click)="onClick()"cdkFocusInitial>Ok</button>
+  </div>
 </div>
