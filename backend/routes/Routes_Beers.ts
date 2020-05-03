@@ -20,8 +20,8 @@ app.get("/:id", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-    const {name, description, containt, price} = req.body;
-    repository.create(name, description, containt, price)
+    const {name, description, containt, note, price} = req.body;
+    repository.create(name, description, containt, note, price)
         .then((beer: BeerInterface) => {
             res.json(beer);
         }).catch((error: Error) => console.log(error));
@@ -47,7 +47,7 @@ app.put("/new_price/:id", (req, res) => {
 app.put("/edit/:id", (req, res) => {
     const {id} = req.params;
     console.log(req.body)
-    const beer: BeerInterface = {name: req.body.name, description: req.body.description, containt: req.body.containt};
+    const beer: BeerInterface = {name: req.body.name, description: req.body.description, containt: req.body.containt, note: req.body.note};
     repository.updateById(id, beer)
         .then(res.status(200).json([]))
         .catch((error: any) => console.log(error))

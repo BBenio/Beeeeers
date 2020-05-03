@@ -15,6 +15,7 @@ export class DialogAddBeerComponent implements OnInit {
   description = new FormControl('');
   price = new FormControl('');
   containt = new FormControl('');
+  note = new FormControl("");
   options: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<DialogAddBeerComponent>, fb: FormBuilder) {
@@ -36,7 +37,8 @@ export class DialogAddBeerComponent implements OnInit {
       let beer = {
         name: this.name.value,
         description: this.description.value,
-        containt: this.containt.value
+        containt: this.containt.value,
+        note: parseFloat(this.note.value)
       };
   
       this.dialogRef.close({beer, price: this.price.value});

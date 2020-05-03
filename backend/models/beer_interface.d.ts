@@ -3,12 +3,15 @@ import {Document} from "mongoose";
 export interface BeerModelInterface extends Document {
     name: string;
     description: string;
+    containt: string;
+    note: number;
 }
 
 export interface BeerInterface {
     name: string;
     description: string;
     containt: string;
+    note: number;
 }
 
 export interface BeerPriceModelInterface extends Document {

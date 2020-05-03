@@ -14,14 +14,16 @@ export class DialogEditComponent implements OnInit {
   name = new FormControl('');
   description = new FormControl('');
   containt = new FormControl('');
-  
+  note = new FormControl('');
+
   class_ng_invalid: boolean = false;
-  constructor(public dialogRef: MatDialogRef<DialogEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Beer) { 
+  constructor(public dialogRef: MatDialogRef<DialogEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Beer) {
 
     this.beer = data;
     this.name.setValue(data.name);
     this.description.setValue(data.description);
     this.containt.setValue(data.containt);
+    this.note.setValue(data.note);
   }
 
   ngOnInit() {
@@ -32,10 +34,11 @@ export class DialogEditComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.name.value !== "") {
+    if (this.name.value !== "" && this.note.value !== ""  && parseFloat(this.note.value) >= 0 && parseFloat(this.note.value) <= 5) {
       this.beer.name = this.name.value;
       this.beer.description = this.description.value;
       this.beer.containt = this.containt.value;
+      this.beer.note = parseFloat(this.note.value);
 
       this.dialogRef.close(this.beer);
     }

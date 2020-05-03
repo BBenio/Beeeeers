@@ -9,6 +9,9 @@
       <input type="text" matInput placeholder="Description" [formControl]="description">
   </mat-form-field>
   <mat-form-field [floatLabel]="auto">
+    <input type="number" matInput placeholder="Note" [formControl]="note" required>
+</mat-form-field>
+  <mat-form-field [floatLabel]="auto">
       <input type="number" matInput placeholder="Price" [formControl]="price" required>
   </mat-form-field>
   <mat-radio-group aria-label="Selectionne un contenant" [formControl]="containt">

@@ -14,6 +14,9 @@
       <mat-radio-button class="button-chose" value="fut">Fût</mat-radio-button>
       <mat-radio-button class="button-chose" value="bouteille">Bouteille</mat-radio-button>
     </mat-radio-group>
+    <mat-form-field [hideRequiredMarker]="true" [floatLabel]="auto" class="ng-invalid">
+      <input type="number" matInput placeholder="Note" [formControl]="note" required>
+    </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onCancel()">No Thanks</button>

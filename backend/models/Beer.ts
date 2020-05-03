@@ -9,6 +9,9 @@ const beer_schema = new Schema({
     },
     containt: {
         type: String
+    },
+    note: {
+      type: Number
     }
 });
 

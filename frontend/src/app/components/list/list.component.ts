@@ -19,16 +19,16 @@ import {DialogAddBeerComponent} from '../dialog-add-beer/dialog-add-beer.compone
 export class ListComponent implements OnInit {
 
   beers: Beer[];
-  displayedColumns = ['name', 'description', 'actions'];
+  displayedColumns = ['name', 'description', 'note', 'actions'];
   dataSource;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
-    private beersService: BeersService, 
-    private router: Router, 
-    public dialogAddPrice: MatDialog, 
-    public dialogEdit: MatDialog, 
+    private beersService: BeersService,
+    private router: Router,
+    public dialogAddPrice: MatDialog,
+    public dialogEdit: MatDialog,
     public dialogDelete: MatDialog,
     public dialogCreate: MatDialog
     ) { }
@@ -71,7 +71,7 @@ export class ListComponent implements OnInit {
         if (result) {
           console.log('Deleted beer');
           this.deleteBeers(id);
-        
+
         }
     })
   }
@@ -91,7 +91,7 @@ export class ListComponent implements OnInit {
   }
 
   createBeer(beer: Beer, price: number) {
-    this.beersService.addBeer(beer.name, beer.description, beer.containt, price).subscribe(() => this.fetchBeers());
+    this.beersService.addBeer(beer.name, beer.description, beer.containt, beer.note, price).subscribe(() => this.fetchBeers());
   }
 
   deleteBeers(id) {
@@ -104,7 +104,7 @@ export class ListComponent implements OnInit {
 
   editBeer(id, beer) {
     console.log(beer);
-    this.beersService.editBeer(id, beer.name, beer.description, beer.containt).subscribe(() => this.fetchBeers());
+    this.beersService.editBeer(id, beer.name, beer.description, beer.containt, beer.note).subscribe(() => this.fetchBeers());
   }
 
   openDialogAddPrice(id: number, beer: Beer): void {
