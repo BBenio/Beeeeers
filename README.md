@@ -1,5 +1,6 @@
 # Beeeeers
 This is an application based on Angular and Node.Js. 
+
 It is a CRUD app. Its purpose is to add, list, modify and delete items (here they are brands of beers.)
 
 ### How to get this app
@@ -29,9 +30,10 @@ _You can change all `your_ip` with localhost_
 - `npm i && npm run start`
 
     _If you want run the front in another port or ip, you can run :
-    ``
-    npm i && npm run start -- --host your_ip --port=your_port
-    ``_
+    
+        ``
+        npm i && npm run start -- --host your_ip --port=your_port
+        ``_
 
 - And go to `your_ip:your_port`
 
