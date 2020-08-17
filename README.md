@@ -18,7 +18,7 @@ It is a CRUD app. Its purpose is to add, list, modify and delete items (here the
     };f
 ```
 
-_You can change all `your_ip` with localhost
+_You can change all `your_ip` with localhost_
 
 ### Run Server
 - `cd backend`
@@ -38,4 +38,4 @@ _You can change all `your_ip` with localhost
 ## Run all with one line
 #### `npm run dev` in this folder
 
-_This is a personal project, to learn Angular and Node.Js.
+_This is a personal project, to learn Angular and Node.Js._
