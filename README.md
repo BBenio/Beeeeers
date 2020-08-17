@@ -31,9 +31,9 @@ _You can change all `your_ip` with localhost_
 
     _If you want run the front in another port or ip, you can run :_
     
-        _``
-        npm i && npm run start -- --host your_ip --port=your_port
-        ``_
+    ``
+    npm i && npm run start -- --host your_ip --port=your_port
+    ``
 
 - And go to `your_ip:your_port`
 
