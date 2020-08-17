@@ -1,7 +1,7 @@
 # Beeeeers
 This is an application based on Angular and Node.Js. 
 
-It is a CRUD app. Its purpose is to add, list, modify and delete items (here they are brands of beers.)
+It is a CRUD app. Its purpose is to add, list, modify and delete items (here they are brands of beers).
 
 ---
 
@@ -13,7 +13,7 @@ It is a CRUD app. Its purpose is to add, list, modify and delete items (here the
     IP_ADDR=your_ip
 ````
 
-- Create `frontend/src/environments/environment.ts` with this data:
+- (/!\ Mandatory) Create `frontend/src/environments/environment.ts` with this data:
 ```
     export const environment = {
         production: false,
