@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Beer} from '../../beer.model';
 import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
 
@@ -34,13 +34,13 @@ export class DialogAddBeerComponent implements OnInit {
 
   onClick(): void {
     if (this.name.value !== "" && this.price.value !== "") {
-      let beer = {
+      const beer: Beer = {
         name: this.name.value,
         description: this.description.value,
         containt: this.containt.value,
         note: parseFloat(this.note.value)
       };
-  
+
       this.dialogRef.close({beer, price: this.price.value});
     }
   }

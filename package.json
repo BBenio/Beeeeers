@@ -5,8 +5,8 @@
   "main": "frontend/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd frontend && npm run start",
-    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm i && npm run start",
+    "server": "cd backend && npm i && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "updating": "concurrently \"cd frontend && npm i\" \"cd backend && npm i\""
   },
@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/BBenio/Beeeeers#readme",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.3.0"
   }
 }

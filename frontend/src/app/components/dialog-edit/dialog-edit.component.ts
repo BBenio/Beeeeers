@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Beer } from 'src/app/beer.model';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ export class DialogEditComponent implements OnInit {
   containt = new FormControl('');
   note = new FormControl('');
 
-  class_ng_invalid: boolean = false;
+  class_ng_invalid = false;
   constructor(public dialogRef: MatDialogRef<DialogEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Beer) {
 
     this.beer = data;

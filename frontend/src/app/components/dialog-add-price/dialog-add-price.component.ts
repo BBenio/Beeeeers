@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Beer} from '../../beer.model';
 import {FormControl} from '@angular/forms';
 
@@ -22,7 +22,7 @@ export class DialogAddPriceComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.newPrice.value !== "") {
+    if (this.newPrice.value !== '') {
       this.dialogRef.close(this.newPrice);
     }
   }

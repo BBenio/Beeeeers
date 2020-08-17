@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 
 import { Beer } from '../../beer.model';
 import { BeersService} from '../../beers.service';
-import {MatDialog, MatSort} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
+import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 import {DialogAddPriceComponent} from '../dialog-add-price/dialog-add-price.component';
@@ -84,7 +85,7 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       console.log('The dialogAddBeer was closed');
       if (result) {
-        console.log("add beer");
+        console.log('add beer');
         this.createBeer(result.beer, result.price);
       }
     })
