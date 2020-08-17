@@ -29,9 +29,9 @@ _You can change all `your_ip` with localhost_
 - `cd frontend`
 - `npm i && npm run start`
 
-    _If you want run the front in another port or ip, you can run :
+    _If you want run the front in another port or ip, you can run :_
     
-        ``
+        _``
         npm i && npm run start -- --host your_ip --port=your_port
         ``_
 
